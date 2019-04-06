@@ -19,10 +19,10 @@ This is a python implementation of GraNiTE framework that solves the triangle co
 ###### Command line Options:
 - \- \-node_emb <node_embedding_filename> (str) 
 - \- \-graphlet_emb <graphlet_embedding_filename> (str)
-- \-d [\- \-hidden_dim] <embedding_dimensions> (int)
-- \-r [\- \-regulation_rate] <regularization_multiplier> (float)
-- \-l [\- \-learning_rate] <learni_rate> (float)
-- \-e [\- \-epochs] <num_epochs> (int)
+- \-d \[\- \-hidden_dim\] <embedding_dimensions> (int)
+- \-r \[\- \-regulation_rate\] <regularization_multiplier> (float)
+- \-l \[\- \-learning_rate\] <learni_rate> (float)
+- \-e \[\- \-epochs\] <num_epochs> (int)
 
 
 
@@ -36,8 +36,8 @@ This is a python implementation of GraNiTE framework that solves the triangle co
 2nd/3rd inputs: graphlet-freq-filename (str)
   - Format: First row headers "node_id1,node_id2,interval-time,event,x0,x1,x2,x3,...,x45"
   - Each row contains train/test sample (edge), corresponding interval-time and graphlet frequencies.
+  - Note that, [graphlets g12 and g19](https://github.com/Vachik-Dave/E-CLoG-Counting-Edge-Centric-Local-Graphlets/blob/master/graphlets_5.pdf) are not local graphlet, so corresponding frequency x12 and x19 is always 0. Hence, effective graphlet dimension is 44.
 
 ##### Outputs:
 - The code outputs MAE for small intervals (<= 30 days) and large intervals (31-60 days) for 5 runs of SVR and lastly prints average MAE for both interval tiems.
 - The code also creates two embedding files with <graph-filename> as a prefix. These emebdding files can be passed as optional arguments (\- \-node_emb  OR \- \-graphlet_emb) for future runs.
-
